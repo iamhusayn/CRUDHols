@@ -12,7 +12,7 @@ class Author(models.Model):
         return self.name
     
 class Detail(models.Model):
-    number_of_books = models.IntegerField
+    number_of_books = models.IntegerField()
 
     def __str__(self):
         return self.number_of_books

@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('AppOne.urls')),
     path('', include('AppTwo.urls')),
     path('admin/', admin.site.urls),
-    # path('', include('api.urls')),
+    # path('api/', include('AppOne.urls')),
+    # path('api/', include('AppTwo.urls')),
 ]

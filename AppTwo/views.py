@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Author
-from .serializers import AuthorSerializer
+from .models import Author, Detail
+from .serializers import AuthorSerializer, DetailSerializer
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 # from rest_framework.decorators import api_view
@@ -15,12 +16,18 @@ from rest_framework.response import Response
 # : Manage data related to "Authors" (fields: name, bio, date_of_birth, etc.).
 # Create your views here. 
 # class AuthorsViewSet(APIView):
-class AuthorsViewSet(APIView):
-    def authors(self, request):
-      author = Author.objects.all()
-      serializer = AuthorSerializer(author, many=True)
-      return HttpResponse({"message": "Welcome to your view. What books would you like to add?", "data": serializer.data})
+class AuthorsView(generics.ListCreateAPIView):
+    serializer_class = AuthorSerializer
+    queryset = Author.objects.all()
 
+    # def authors(self, request):
+    #   author = Author.objects.all()
+    #   serializer = AuthorSerializer(author, many=True)
+    #   return HttpResponse({"message": "Welcome to your view. What books would you like to add?", "data": serializer.data})
+
+class AuthorsDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AuthorSerializer
+    queryset = Author.objects.all()
 
 
 def authors(request):
@@ -40,11 +47,11 @@ def list_of_authors(request):
     # return HttpResponse("Welcome to the author's page.") 
     
 
-@api_view(['GET'])
-def getData(request):
-  items = Author.objects.all()
-  serializer = AuthorSerializer(items, many=True)
-  return Response(serializer.data)
+# @api_view(['GET'])
+# def getData(request):
+#   items = Author.objects.all()
+#   serializer = AuthorSerializer(items, many=True)
+#   return Response(serializer.data)
 
 # @api_view(['POST'])
 # def addAuthor(request):
