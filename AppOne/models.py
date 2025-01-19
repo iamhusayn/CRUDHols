@@ -11,3 +11,10 @@ class Book(models.Model):
 
     def __str__(self):
         return self.Tittle
+    
+class Detail(models.Model):
+    bookName = models.CharField(max_length=100)
+    bookPages = models.IntegerField
+
+    def __str__(self):
+        return self.bookPages

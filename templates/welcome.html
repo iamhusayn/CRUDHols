@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
 </head>
 <body>
-  <h1>Welcome to your Portal</h1>
-  Hello {{users_name}}!
+  {% csrf_token %}
+    <h1>Welcome to your Portal</h1>
+    Hello {{users_name}}!
 </body>
 </html>
