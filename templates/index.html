@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Management System</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+</head>
+<body>
+  <h1 class="header">Welcome to Book Management Portal</h1>
+
+  <div>
+    <a href="books/">Books</a>
+    <a href="cart/">Check Cart</a>
+  </div>
+
+  <form method="POST" action="/save/">
+    {% csrf_token %}
+    <table>
+      <tbody>
+        <tr>
+          <td><label for="name">Enter your name:</label></td>
+          <td><input type="text" name="users_name"></td>
+        </tr>
+
+        <!-- <tr>
+          <td><label for="name">Enter Age:</label></td>
+          <td><input type="text" name="user_name"></td>
+        </tr> -->
+
+        <tr>
+          <td><button type="submit" class="text-yellow-600">Save</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+
+
+</body>
+</html>
