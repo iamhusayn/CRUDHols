@@ -21,8 +21,6 @@ class BookView(generics.ListCreateAPIView):
             queryset = queryset.filter(bookPages=detail)
         return queryset
         
-        # return Response({"message": "Welcome to your view. What books would you like to add?", "data": serializer.data})
-
 class BookDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
@@ -31,8 +29,7 @@ class BookDetail(generics.RetrieveUpdateDestroyAPIView):
 def home(request): 
     template = loader.get_template('index.html')
     return HttpResponse(template.render())
-# render (request, "index.html", context={})
-#HttpResponse("Hello World")
+
     
 def cart(request):
     mybooks = Book.objects.all().values()
